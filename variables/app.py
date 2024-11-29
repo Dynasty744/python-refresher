@@ -19,8 +19,8 @@
 
 # TYPE CONVERSION
 #
-# birth_yerar = input("Enter your birth year: ")
-# current_age = 2024 - int(birth_yerar) # conversion here
+# birth_year = input("Enter your birth year: ")
+# current_age = 2024 - int(birth_year) # conversion here
 # print(current_age)
 
 # ADDITION CALCULATOR
@@ -41,5 +41,11 @@
 # print('Python' in course) # True
 
 # ARITHMETIC OPERATORS
-#
-# 
+# #
+# print( 10 / 3) # returns a float
+# print( 10 // 3) # returns int
+# print( 10 ** 3) # returns 10 to the power of 3
+# x = 10
+# x = x + 3 # x is now 13
+# x += 3 # same as line 49, called augmented assignment operator
+
