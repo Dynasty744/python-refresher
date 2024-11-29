@@ -33,5 +33,13 @@
 
 # STRINGS
 #
-course = 'Python for Beginners'
-print(course.upper())
+# course = 'Python for Beginners'
+# print(course.upper())
+# print(course.find('y')) # .find(y) will return the index of the first occurence of 'y'
+# print(course.find('for'))
+# print(course.replace('for', '4'))
+# print('Python' in course) # True
+
+# ARITHMETIC OPERATORS
+#
+# 
