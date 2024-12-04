@@ -1,6 +1,8 @@
 # Lessons from Programming with Mosh
 # https://www.youtube.com/watch?v=kqtD5dpn9C8
 
+# BASIC CONCEPTS
+
 # Primitives or Basic types in Python
 # 1 number (int)
 # 1.1 number (float)
@@ -139,11 +141,12 @@
 #     i = i + 1
 
 # RANGE() FUNCTION
+# range(stop)
+# range(start, stop, step=1)
 # use range to generate a sequence of numbers
 #
-# numbers = range(5, 10, 2)
-# for number in range(5, 10, 2):
-#     print(number)
+for number in range(5, 10, 2):
+    print(number)
 
 # TUPLES
 # kind of like lists, stores sequence of objects, but are immutable
@@ -151,3 +154,66 @@
 # print(numbers.count(3))
 # print(numbers.index(2))
 # numbers[0] = 10
+
+# SELF EXERCISES
+# nums = [1, 2, 3, 4]
+# myDict = {
+#   'dad': 48,
+#   'mom': 34,
+#   'son1': 7,
+#   'son2': 1  
+# }
+
+# for i in nums:
+#   print(i)
+
+# for i in nums: # for every el in nums
+#   for j in nums: # for every el in nums
+#     print(i) # print i for the len of nums, so print i 4 times in a row, then same for next index
+# output:
+# 1
+# 1
+# 1
+# 1
+# 2
+# 2
+# 2
+# 2
+# 3
+# 3
+# 3
+# 3
+# 4
+# 4
+# 4
+# 4
+
+# for i in nums: # for every el in nums
+#   for j in nums: # for every el in nums
+#     print(j) # print all of inner loop nums then iterate again on outer loops
+# output:
+# 1
+# 2
+# 3
+# 4
+# 1
+# 2
+# 3
+# 4
+# 1
+# 2
+# 3
+# 4
+# 1
+# 2
+# 3
+# 4
+
+# for idx, num in enumerate(nums, start=0): # enumerate provides the index here
+#   print("index: " + str(idx) + ", value: " + str(num))
+
+# for x in myDict: # x represents key
+#   print(x)
+
+# for x in myDict.items(): # x represents k/v pair
+#   print(x)
