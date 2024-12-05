@@ -4,7 +4,7 @@ from typing import List
 # Input: nums = [2,7,11,15], target = 9
 # Output: [0,1]
 
-nums = [2,7,11,15, 345, 32, 2, 4, 7, -9]
+nums = [2,7,11,15,345,32,4,-9]
 target = -2
 
 class Solution:
@@ -27,16 +27,36 @@ class Solution:
     # as we iterate through the list, we need to keep track of the value, and its index, so use a dictionary
     # we also need to use enumerate(), so we have access to index and value
     # x = target - current, think of x + y = target with 'y' moved over to the right
-    map = {}
+    my_map = {}
     for index, value in enumerate(nums):
       complement = target - value
-      if complement in map:
-        return [map[complement], index]
-      if value not in map:
-        map[value] = index
+      if complement in my_map:
+        return [my_map[complement], index]
+      if value not in my_map:
+        my_map[value] = index
     return None
+  
+  def containsDuplicate(self, nums: List[int]) -> bool:
+    # O(n)
+    # use a loop to keep track if current num is in dictionary
+    # if current num is in dictionary, return true, else false
+    # this is O(n) because time complexity increases linearly with size of list
+    # my_map = {}
+    # for num in nums:
+    #   if num in my_map:
+    #     return True
+    #   my_map[num] = 1
+    # return False
+  
+    # O(1)
+    # by passing in the nums list into a set()
+    # then compare length of nums and numsSet
+    # if length of numsSet is smaller than length of nums, true
+    return (len(set(nums)) < len(nums))
+
 
 solution = Solution()
 result = solution.twoSum(nums, target)
+result = solution.containsDuplicate(nums)
 
 print(result)
