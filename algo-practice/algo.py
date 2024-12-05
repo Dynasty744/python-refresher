@@ -1,11 +1,9 @@
 from typing import List
 
-# two sum
-# Input: nums = [2,7,11,15], target = 9
-# Output: [0,1]
-
 nums = [2,7,11,15,345,32,4,-9]
 target = -2
+s = 'anagram'
+t = 'nagaram'
 
 class Solution:
   def twoSum(self, nums: List[int], target: int) -> List[int]:
@@ -48,15 +46,21 @@ class Solution:
     #   my_map[num] = 1
     # return False
   
-    # O(1)
+    # O(n)
     # by passing in the nums list into a set()
     # then compare length of nums and numsSet
     # if length of numsSet is smaller than length of nums, true
     return (len(set(nums)) < len(nums))
+  
+  def isAnagram(self, s: str, t: str) -> bool:
+    # O(n log n)
+    # this is order of n log n because it's using sorted()
+    return sorted(s) == sorted(t)
 
 
 solution = Solution()
 result = solution.twoSum(nums, target)
 result = solution.containsDuplicate(nums)
+result = solution.isAnagram(s, t)
 
 print(result)

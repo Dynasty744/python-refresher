@@ -140,13 +140,24 @@
 #     print(numbers[i])
 #     i = i + 1
 
+# SORT()
+# sorted() can be used with iterables, however,
+# sort() can only be used with lists, because it's a method of list class
+# sort() returns None and modifies the values in place
+s = 'hello'
+l = [2,1,3]
+lSorted = l.sort()
+print(sorted(s))
+print(l) # [1, 2, 3]
+print(lSorted) # None
+
 # RANGE() FUNCTION
 # range(stop)
 # range(start, stop, step=1)
 # use range to generate a sequence of numbers
 #
-for number in range(5, 10, 2):
-    print(number)
+# for number in range(5, 10, 2):
+#     print(number)
 
 # TUPLES
 # kind of like lists, stores sequence of objects, but are immutable
