@@ -144,12 +144,12 @@
 # sorted() can be used with iterables, however,
 # sort() can only be used with lists, because it's a method of list class
 # sort() returns None and modifies the values in place
-s = 'hello'
-l = [2,1,3]
-lSorted = l.sort()
-print(sorted(s))
-print(l) # [1, 2, 3]
-print(lSorted) # None
+# s = 'hello'
+# l = [2,1,3]
+# lSorted = l.sort()
+# print(sorted(s)) # ['e', 'h', 'l', 'l', 'o']
+# print(l) # [1, 2, 3]
+# print(lSorted) # None
 
 # RANGE() FUNCTION
 # range(stop)
@@ -167,13 +167,13 @@ print(lSorted) # None
 # numbers[0] = 10
 
 # SELF EXERCISES
-# nums = [1, 2, 3, 4]
-# myDict = {
-#   'dad': 48,
-#   'mom': 34,
-#   'son1': 7,
-#   'son2': 1  
-# }
+nums = [1, 2, 3, 4]
+myDict = {
+  'dad': 48,
+  'mom': 34,
+  'son1': 7,
+  'son2': 1  
+}
 
 # for i in nums:
 #   print(i)
@@ -220,11 +220,14 @@ print(lSorted) # None
 # 3
 # 4
 
-# for idx, num in enumerate(nums, start=0): # enumerate provides the index here
-#   print("index: " + str(idx) + ", value: " + str(num))
+for idx, num in enumerate(nums, start=0): # enumerate provides the index here
+  print("index: " + str(idx) + ", value: " + str(num))
 
-# for x in myDict: # x represents key
-#   print(x)
+for x in myDict: # x represents key
+  print(x)
 
-# for x in myDict.items(): # x represents k/v pair
-#   print(x)
+for x in myDict.items(): # x represents k/v pair
+  print(x)
+
+# strs = ["a"]
+# print(len(strs))

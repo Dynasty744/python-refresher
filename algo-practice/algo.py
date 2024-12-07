@@ -1,9 +1,11 @@
 from typing import List
 
-nums = [2,7,11,15,345,32,4,-9]
+nums = [1,1,1,2,2,3]
 target = -2
 s = 'aacc'
 t = 'ccac'
+strs = ["eat","tea","tan","ate","nat","bat"]
+k = 2
 
 class Solution:
   def twoSum(self, nums: List[int], target: int) -> List[int]:
@@ -76,10 +78,25 @@ class Solution:
         tMap[c] = 1
     return sMap == tMap
 
+  def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
+    # O(n log n)
+    # take out each element and sort
+    # once sorted, put into dictionary as keys
+    # the value should be the actual string before sorting
+    # then push the values for each key into a list
+    str_map = {}
+    for str in strs:
+      key = ''.join(sorted(str))
+      if key in str_map:
+        str_map[key].append(str)
+      else:
+        str_map[key] = [str]
+    return list(str_map.values())
 
 solution = Solution()
 # result = solution.twoSum(nums, target)
 # result = solution.containsDuplicate(nums)
-result = solution.isAnagram(s, t)
+# result = solution.isAnagram(s, t)
+result = solution.groupAnagrams(strs)
 
 print(result)
