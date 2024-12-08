@@ -1,6 +1,6 @@
 from typing import List
 
-nums = [1,1,1,2,2,3]
+nums = [2,2,1,1,2,3,1,3]
 target = -2
 s = 'aacc'
 t = 'ccac'
@@ -93,10 +93,24 @@ class Solution:
         str_map[key] = [str]
     return list(str_map.values())
 
+  def topKFrequent(self, nums: List[int], k: int) -> List[int]:
+    # O(n log n)
+    # the approach here is to use a map
+    # as we iterate through the list, track the number as key and times appeared as value
+    # then sort the map and return only the k most frequent appeared keys
+    nums_map = {}
+    for num in nums:
+      if num in nums_map:
+        nums_map[num] += 1
+      else:
+        nums_map[num] = 1
+    return [item[0] for item in sorted(nums_map.items(), key=lambda item: item[1], reverse=True)[:k]]
+
 solution = Solution()
 # result = solution.twoSum(nums, target)
 # result = solution.containsDuplicate(nums)
 # result = solution.isAnagram(s, t)
-result = solution.groupAnagrams(strs)
+# result = solution.groupAnagrams(strs)
+result = solution.topKFrequent(nums, k)
 
 print(result)

@@ -167,13 +167,13 @@
 # numbers[0] = 10
 
 # SELF EXERCISES
-nums = [1, 2, 3, 4]
-myDict = {
-  'dad': 48,
-  'mom': 34,
-  'son1': 7,
-  'son2': 1  
-}
+# nums = [1, 2, 3, 4]
+# myDict = {
+#   'dad': 48,
+#   'mom': 34,
+#   'son1': 7,
+#   'son2': 1  
+# }
 
 # for i in nums:
 #   print(i)
@@ -220,14 +220,20 @@ myDict = {
 # 3
 # 4
 
-for idx, num in enumerate(nums, start=0): # enumerate provides the index here
-  print("index: " + str(idx) + ", value: " + str(num))
+# for idx, num in enumerate(nums, start=0): # enumerate provides the index here
+#   print("index: " + str(idx) + ", value: " + str(num))
 
-for x in myDict: # x represents key
-  print(x)
+# for x in myDict: # x represents key
+#   print(x)
 
-for x in myDict.items(): # x represents k/v pair
-  print(x)
+# for x in myDict.items(): # x represents k/v pair
+#   print(x)
 
 # strs = ["a"]
 # print(len(strs))
+
+nums = [10, 3, 5]
+sorted_nums = sorted(nums, key=lambda item: item)
+# Here, `key=lambda x: x` simply returns the element itself for comparison.
+
+print(sorted_nums)
