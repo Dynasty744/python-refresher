@@ -5,7 +5,8 @@ target = -2
 s = 'aacc'
 t = 'ccac'
 strs = ["eat","tea","tan","ate","nat","bat"]
-k = 2
+k = 3
+words = ["i","love","leetcode","i","love","coding"]
 
 class Solution:
   def twoSum(self, nums: List[int], target: int) -> List[int]:
@@ -63,19 +64,19 @@ class Solution:
     # the order of the strings doesn't matter when attempting to prove anagram
     # therefore, loop through each string and store chars in dict
     # then compare dicts after
-    sMap, tMap = {}, {}
-    if len(s) != len(t):
-      return False
-    for c in s:
-      if c in sMap:
-        sMap[c] += 1
-      else:
-        sMap[c] = 1
-    for c in t:
-      if c in tMap:
-        tMap[c] += 1
-      else:
-        tMap[c] = 1
+    # sMap, tMap = {}, {}
+    # if len(s) != len(t):
+    #   return False
+    # for c in s:
+    #   if c in sMap:
+    #     sMap[c] += 1
+    #   else:
+    #     sMap[c] = 1
+    # for c in t:
+    #   if c in tMap:
+    #     tMap[c] += 1
+    #   else:
+    #     tMap[c] = 1
     return sMap == tMap
 
   def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
@@ -93,7 +94,7 @@ class Solution:
         str_map[key] = [str]
     return list(str_map.values())
 
-  def topKFrequent(self, nums: List[int], k: int) -> List[int]:
+  def topKFrequentNums(self, nums: List[int], k: int) -> List[int]:
     # O(n log n)
     # the approach here is to use a map
     # as we iterate through the list, track the number as key and times appeared as value
@@ -106,11 +107,26 @@ class Solution:
         nums_map[num] = 1
     return [item[0] for item in sorted(nums_map.items(), key=lambda item: item[1], reverse=True)[:k]]
 
+  def topKFrequentStrs(self, words: List[str], k: int) -> List[str]:
+    # Return the answer sorted by the frequency from highest to lowest. 
+    # Sort the words with the same frequency by their lexicographical order.
+    #
+    # again, use a hash map to track which str has appeared and how many times
+    # loop through words list
+    # because we need sort in lexicographical order, sort by frequency in descending order
+    str_map = {}
+    for word in words:
+      if word in str_map:
+        str_map[word] += 1
+      else:
+        str_map[word] = 1
+    return [item[0] for item in sorted(str_map.items(), key=lambda item: (-item[1], item[0]))[:k]]
+
 solution = Solution()
 # result = solution.twoSum(nums, target)
 # result = solution.containsDuplicate(nums)
 # result = solution.isAnagram(s, t)
 # result = solution.groupAnagrams(strs)
-result = solution.topKFrequent(nums, k)
+result = solution.topKFrequentStrs(words, k)
 
 print(result)

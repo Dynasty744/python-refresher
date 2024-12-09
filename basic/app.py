@@ -1,6 +1,15 @@
 # Lessons from Programming with Mosh
 # https://www.youtube.com/watch?v=kqtD5dpn9C8
 
+nums = [1, 2, 3, 4]
+myDict = {
+  'dad': 48,
+  'mom': 34,
+  'son1': 7,
+  'son2': 1  
+}
+strs = ["a"]
+
 # BASIC CONCEPTS
 
 # Primitives or Basic types in Python
@@ -167,13 +176,6 @@
 # numbers[0] = 10
 
 # SELF EXERCISES
-# nums = [1, 2, 3, 4]
-# myDict = {
-#   'dad': 48,
-#   'mom': 34,
-#   'son1': 7,
-#   'son2': 1  
-# }
 
 # for i in nums:
 #   print(i)
@@ -229,11 +231,7 @@
 # for x in myDict.items(): # x represents k/v pair
 #   print(x)
 
-# strs = ["a"]
-# print(len(strs))
-
-nums = [10, 3, 5]
-sorted_nums = sorted(nums, key=lambda item: item)
+# sorted_nums = sorted(nums, key=lambda item: item)
 # Here, `key=lambda x: x` simply returns the element itself for comparison.
 
-print(sorted_nums)
+# print(sorted_nums)
