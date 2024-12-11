@@ -235,3 +235,6 @@ strs = ["a"]
 # Here, `key=lambda x: x` simply returns the element itself for comparison.
 
 # print(sorted_nums)
+
+nums = []
+print(len(nums))
