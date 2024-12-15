@@ -8,7 +8,21 @@ nums = [100, 4, 200, 1, 3, 2]
 # k = 2
 # words = ["i","love","leetcode","i","love","coding"]
 
-class Solution:  
+class Solution:
+  def isPalindrome(self, s: str) -> bool:
+    # O(n) loop is iterating over the string once only
+    # approach is to make everything lowercase
+    # then set 2 lists for insert(0, char) and append(c)
+    # once loop is done return the 2 lists as equality
+    lower_s = s.lower()
+    inserted_s = []
+    appended_s = []
+    for c in lower_s:
+      if c.isalnum():
+        inserted_s.insert(0,c)
+        appended_s.append(c)
+    return inserted_s == appended_s
+
   def longestConsecutive(self, nums: List[int]) -> int:
     # brute force method
     # will need to track max_streak and current_streak
@@ -169,7 +183,8 @@ class Solution:
     return None
 
 solution = Solution()
-result = solution.longestConsecutive(nums)
+result = solution.isPalindrome(nums)
+# result = solution.longestConsecutive(nums)
 # result = solution.productExceptSelf(nums)
 # result = solution.topKFrequentStrs(words, k)
 # result = solution.topKFrequentNums(nums, k)
