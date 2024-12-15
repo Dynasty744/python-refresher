@@ -160,6 +160,11 @@ strs = ["a"]
 # print(l) # [1, 2, 3]
 # print(lSorted) # None
 
+# MAX()
+# returns the maximum value in an iterable
+# print(max(1,2,4,3)) # 3
+# print(max([1,3,5,2])) # 5
+
 # RANGE() FUNCTION
 # range(stop)
 # range(start, stop, step=1)

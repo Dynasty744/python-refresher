@@ -30,19 +30,21 @@ class Solution:
     #     if current_streak > max_streak:
     #       max_streak = current_streak
 
-    # return max_streak
-    # O(n)
-    nums_set = set(nums)  # Convert list to a set for O(1) lookups
+    # O(n) solution involves using a set for O(1) look ups
+    # https://www.youtube.com/watch?v=P6RZZMu_maU - good explanation
+    # so we only iterate once through the list while looking up next nums in set
+    # it's important that the if statement is checking for current_num - 1 IS NOT in set
+    # so it starts counting the streak properly. If it checks for current_num - 1 IS IN set instead
+    # then the count of current_num - 1 is not included and longest_streak will always be off by minus 1
+    nums_set = set(nums)  # Convert list to a set for O(1) lookups, because python set is implemented as a hash map
     longest_streak = 0
 
     for num in nums_set:
-        # Only start counting if `num` is the start of a sequence
+        # Only start streak if 'num' has NO left neighbor
       if num - 1 not in nums_set:
-        current_num = num
         current_streak = 1
-
-        while current_num + 1 in nums_set:
-          current_num += 1
+        while num + 1 in nums_set:
+          num += 1
           current_streak += 1
 
         longest_streak = max(longest_streak, current_streak)
