@@ -3,6 +3,7 @@ from typing import List
 nums = [100, 4, 200, 1, 3, 2]
 # target = -2
 # s = 'aacc'
+s = "A man, a plan, a canal: Panama"
 # t = 'ccac'
 # strs = ["eat","tea","tan","ate","nat","bat"]
 # k = 2
@@ -14,14 +15,32 @@ class Solution:
     # approach is to make everything lowercase
     # then set 2 lists for insert(0, char) and append(c)
     # once loop is done return the 2 lists as equality
-    lower_s = s.lower()
-    inserted_s = []
-    appended_s = []
-    for c in lower_s:
-      if c.isalnum():
-        inserted_s.insert(0,c)
-        appended_s.append(c)
-    return inserted_s == appended_s
+    # lower_s = s.lower()
+    # inserted_s = []
+    # appended_s = []
+    # for c in lower_s:
+    #   if c.isalnum():
+    #     inserted_s.insert(0,c)
+    #     appended_s.append(c)
+    # return inserted_s == appended_s
+
+    # O(n) we'll use a 2 pointer solution
+    # start at index[0] for the left boundary
+    # start at index[len(s) - 1] for the right boundary
+    # nested while loops, left and right should match on iteration, if not then false
+    # add 1 for left and minus 1 for right
+    left = 0
+    right = len(s) - 1
+    while left < right:
+      while left < right and not s[left].isalnum():
+        left += 1
+      while right > left and not s[right].isalnum():
+        right -= 1
+      if s[left].lower() != s[right].lower():
+        return False
+      left += 1
+      right -= 1
+    return True
 
   def longestConsecutive(self, nums: List[int]) -> int:
     # brute force method

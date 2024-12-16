@@ -173,6 +173,16 @@ strs = ["a"]
 # for number in range(5, 10, 2):
 #     print(number)
 
+# .isalnum()
+# this is a string method, returns true for alphabet letter (a-z) and numbers (0-9)
+# str = "Company12"
+# print(str.isalnum()) # True
+
+# .isalpha
+# another string method that returns true for alphabet letters only
+# str = "Company"
+# print(str.isalpha()) # True
+
 # TUPLES
 # kind of like lists, stores sequence of objects, but are immutable
 # numbers = (1, 2, 3, 3)
