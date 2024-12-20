@@ -1,15 +1,34 @@
 from typing import List
 
-nums = [100, 4, 200, 1, 3, 2]
-# target = -2
+# nums = [100, 4, 200, 1, 3, 2]
+numbers_sorted = [2,7,11,15]
+target = 9
 # s = 'aacc'
-s = "A man, a plan, a canal: Panama"
+# s = "A man, a plan, a canal: Panama"
 # t = 'ccac'
 # strs = ["eat","tea","tan","ate","nat","bat"]
 # k = 2
 # words = ["i","love","leetcode","i","love","coding"]
 
 class Solution:
+  def twoSumSorted(self, numbers_sorted: List[int], target: int) -> List[int]:
+    # if the list is already sorted, then we can utilize a 2 pointer solution
+    # left pointer would be the first index, right pointer would be the last index
+    # add the two indexes together, if it's the target, then return the indicies
+    # if it's lesser than the target, move the left pointer to the right by 1
+    # if it's more than the target, move the right pointer to the left by 1
+    # eventually, the indicies will meet and add to target
+    left = 0
+    right = len(numbers_sorted) - 1
+    while left < right:
+      if numbers_sorted[left] + numbers_sorted[right] == target:
+        return [left, right]
+      elif numbers_sorted[left] + numbers_sorted[right] > target:
+        right -= 1
+      else:
+        left += 1
+    return None
+
   def isPalindrome(self, s: str) -> bool:
     # O(n) loop is iterating over the string once only
     # approach is to make everything lowercase
@@ -202,7 +221,8 @@ class Solution:
     return None
 
 solution = Solution()
-result = solution.isPalindrome(nums)
+result = solution.twoSumSorted(numbers_sorted, target)
+# result = solution.isPalindrome(nums)
 # result = solution.longestConsecutive(nums)
 # result = solution.productExceptSelf(nums)
 # result = solution.topKFrequentStrs(words, k)
