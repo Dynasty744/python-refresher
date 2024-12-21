@@ -153,12 +153,14 @@ strs = ["a"]
 # sorted() can be used with iterables, however,
 # sort() can only be used with lists, because it's a method of list class
 # sort() returns None and modifies the values in place
-# s = 'hello'
-# l = [2,1,3]
-# lSorted = l.sort()
-# print(sorted(s)) # ['e', 'h', 'l', 'l', 'o']
-# print(l) # [1, 2, 3]
-# print(lSorted) # None
+# if it's already a list, then use the .sort() method
+# it will modify the called list!
+s = 'hello'
+l = [2,1,3]
+lSorted = l.sort()
+print(sorted(s)) # ['e', 'h', 'l', 'l', 'o']
+print(l) # [1, 2, 3]
+print(lSorted) # None
 
 # MAX()
 # returns the maximum value in an iterable
@@ -251,5 +253,5 @@ strs = ["a"]
 
 # print(sorted_nums)
 
-nums = []
-print(len(nums))
+# nums = []
+# print(len(nums))

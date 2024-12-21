@@ -1,8 +1,8 @@
 from typing import List
 
-# nums = [100, 4, 200, 1, 3, 2]
-numbers_sorted = [2,7,11,15]
-target = 9
+nums = [100, 4, 200, 1, 3, 2]
+# numbers_sorted = [2,7,11,15]
+# target = 9
 # s = 'aacc'
 # s = "A man, a plan, a canal: Panama"
 # t = 'ccac'
@@ -11,8 +11,11 @@ target = 9
 # words = ["i","love","leetcode","i","love","coding"]
 
 class Solution:
+  def threeSum(self, nums: List[int]) -> List[List[int]]:
+
+
   def twoSumSorted(self, numbers_sorted: List[int], target: int) -> List[int]:
-    # if the list is already sorted, then we can utilize a 2 pointer solution
+    # since the list is already sorted, then we can utilize a 2 pointer solution
     # left pointer would be the first index, right pointer would be the last index
     # add the two indexes together, if it's the target, then return the indicies
     # if it's lesser than the target, move the left pointer to the right by 1
@@ -221,7 +224,8 @@ class Solution:
     return None
 
 solution = Solution()
-result = solution.twoSumSorted(numbers_sorted, target)
+result = solution.threeSum(nums)
+# result = solution.twoSumSorted(numbers_sorted, target)
 # result = solution.isPalindrome(nums)
 # result = solution.longestConsecutive(nums)
 # result = solution.productExceptSelf(nums)
