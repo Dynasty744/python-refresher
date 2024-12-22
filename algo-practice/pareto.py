@@ -1,6 +1,6 @@
 from typing import List
 
-nums = [100, 4, 200, 1, 3, 2]
+nums = [-2, -2, 0, 0, 2, 2]
 # numbers_sorted = [2,7,11,15]
 # target = 9
 # s = 'aacc'
@@ -12,7 +12,42 @@ nums = [100, 4, 200, 1, 3, 2]
 
 class Solution:
   def threeSum(self, nums: List[int]) -> List[List[int]]:
-
+    # this solution will involve sorting nums, therefore O(n log n)
+    # but there will be a nested for loop and while loop
+    # so ultimately the time complexity is O(n^2)
+    # the general idea is to sort the nums list first
+    # then the for loop will iterate over each sorted num
+    # as we start the loop, we need to make sure 2 things
+    # make sure index is greater than 0 (basically first iterate)
+    # and also current_num is equal to previous_num
+    # if both true, then 'continue' to skip the current execution
+    # the purpose of this is to make sure to not have duplicate trios
+    # then we will start the comparison of twoSum II by setting 2 pointers
+    # once the pointers are declared and initialized, start adding to zero
+    # if greater than zero, then move right by 1
+    # if lesser than zero, then move left by 1
+    # end with appending to res list
+    # then move left by 1 to start the next iteration
+    # third nested while loop to check l < r and current_num is equal to previous
+    # then move left by 1
+    res = []
+    nums.sort()
+    for index, num in enumerate(nums):
+      if index > 0 and nums[index] == nums[index - 1]:
+        continue
+      left, right = index + 1, len(nums) - 1
+      while left < right:
+        threeSum = nums[index] + nums[left] + nums[right]
+        if threeSum > 0:
+          right -= 1
+        elif threeSum < 0:
+          left += 1
+        else:
+          res.append([nums[index], nums[left], nums[right]])
+          left += 1
+          while nums[left] == nums[left - 1] and left < right:
+            left += 1
+    return res
 
   def twoSumSorted(self, numbers_sorted: List[int], target: int) -> List[int]:
     # since the list is already sorted, then we can utilize a 2 pointer solution
