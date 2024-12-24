@@ -1,6 +1,6 @@
 from typing import List
 
-nums = [-2, -2, 0, 0, 2, 2]
+# nums = [-2, -2, 0, 0, 2, 2]
 # numbers_sorted = [2,7,11,15]
 # target = 9
 # s = 'aacc'
@@ -9,8 +9,24 @@ nums = [-2, -2, 0, 0, 2, 2]
 # strs = ["eat","tea","tan","ate","nat","bat"]
 # k = 2
 # words = ["i","love","leetcode","i","love","coding"]
+height = [1,8,6,2,5,4,8,3,7]
 
 class Solution:
+  def maxArea(self, height: List[int]) -> int:
+    # brute force method is to go through each height
+    # and calculate the area of left and right
+    # width would be right boundary minus left
+    # height focus on the smaller height
+    # because the water would spill over
+    # then update max of res as necessary
+    res = 0
+
+    for l in range(len(height)):
+      for r in range(l + 1, len(height)):
+        area = (r - l) * min(height[l], height[r])
+        res = max(res, area)
+    return res
+
   def threeSum(self, nums: List[int]) -> List[List[int]]:
     # this solution will involve sorting nums, therefore O(n log n)
     # but there will be a nested for loop and while loop
@@ -259,7 +275,8 @@ class Solution:
     return None
 
 solution = Solution()
-result = solution.threeSum(nums)
+result = solution.maxArea(height)
+# result = solution.threeSum(nums)
 # result = solution.twoSumSorted(numbers_sorted, target)
 # result = solution.isPalindrome(nums)
 # result = solution.longestConsecutive(nums)
