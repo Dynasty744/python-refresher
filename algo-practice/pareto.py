@@ -10,17 +10,41 @@ from typing import List
 # k = 2
 # words = ["i","love","leetcode","i","love","coding"]
 # height = [1,8,6,2,5,4,8,3,7]
-prices = [10,1,5,6,7,1]
+prices = [1,2,4,2,5,7,2,4,9,0,9]
 
 class Solution:
   def maxProfit(self, prices: List[int]) -> int:
     # O(n^2)
-    profit_max = 0
-    for i in range(len(prices)):
-      for j in range(i + 1, len(prices)):
-        profit_today = prices[j] - prices[i]
-        profit_max = max(profit_today, profit_max)
-    return profit_max
+    # for this approach, we're using nested loops
+    # we're going to use each number, and check for future numbers
+    # and keep whatever is the highest of the difference
+
+    # profit_max = 0
+    # for i in range(len(prices)):
+    #   for j in range(i + 1, len(prices)):
+    #     profit_today = prices[j] - prices[i]
+    #     profit_max = max(profit_today, profit_max)
+    # return profit_max
+  
+    # O(n) sliding window
+    # we're using 2 pointer technique here
+    # but conditionally moving the boundaries
+    # setting the loop to run while left < right
+    # we caculate the profit only if buy is smaller than sell
+    # if sell price is ever lower than buy price
+    # then we pivot buy price to sell price (left -> right)
+    # end with incrementing right position
+    max_profit = 0
+    left = 0
+    right = 1
+    while right < len(prices):
+      if prices[left] < prices[right]:
+        current_profit = prices[right] - prices[left]
+        max_profit = max(current_profit, max_profit)
+      else:
+        left = right
+      right += 1
+    return max_profit
 
   def maxArea(self, height: List[int]) -> int:
     # brute force method is to go through each height
