@@ -9,9 +9,19 @@ from typing import List
 # strs = ["eat","tea","tan","ate","nat","bat"]
 # k = 2
 # words = ["i","love","leetcode","i","love","coding"]
-height = [1,8,6,2,5,4,8,3,7]
+# height = [1,8,6,2,5,4,8,3,7]
+prices = [10,1,5,6,7,1]
 
 class Solution:
+  def maxProfit(self, prices: List[int]) -> int:
+    # O(n^2)
+    profit_max = 0
+    for i in range(len(prices)):
+      for j in range(i + 1, len(prices)):
+        profit_today = prices[j] - prices[i]
+        profit_max = max(profit_today, profit_max)
+    return profit_max
+
   def maxArea(self, height: List[int]) -> int:
     # brute force method is to go through each height
     # and calculate the area of left and right
@@ -296,7 +306,8 @@ class Solution:
     return None
 
 solution = Solution()
-result = solution.maxArea(height)
+result = solution.maxProfit(prices)
+# result = solution.maxArea(height)
 # result = solution.threeSum(nums)
 # result = solution.twoSumSorted(numbers_sorted, target)
 # result = solution.isPalindrome(nums)
