@@ -3,16 +3,38 @@ from typing import List
 # nums = [-2, -2, 0, 0, 2, 2]
 # numbers_sorted = [2,7,11,15]
 # target = 9
-# s = 'aacc'
+s = "pwwkew"
 # s = "A man, a plan, a canal: Panama"
 # t = 'ccac'
 # strs = ["eat","tea","tan","ate","nat","bat"]
 # k = 2
 # words = ["i","love","leetcode","i","love","coding"]
 # height = [1,8,6,2,5,4,8,3,7]
-prices = [1,2,4,2,5,7,2,4,9,0,9]
+# prices = [1,2,4,2,5,7,2,4,9,0,9]
 
 class Solution:
+  def lengthOfLongestSubstring(self, s: str) -> int:
+    # sliding window technique
+    # we create a set to hold the substring
+    # as we iterate through the string
+    # if the char is in set
+    # remove the left most char
+    # move the left pointer by 1
+    # and add the right char to set
+    # then update the len of set to res
+    res = 0
+    char_set = set()
+    left = 0
+    res = 0
+
+    for right in range(len(s)):
+      while s[right] in char_set:
+        char_set.remove(s[left])
+        left += 1
+      char_set.add(s[right])
+      res = max(len(char_set), res)
+    return res
+
   def maxProfit(self, prices: List[int]) -> int:
     # O(n^2)
     # for this approach, we're using nested loops
@@ -330,7 +352,8 @@ class Solution:
     return None
 
 solution = Solution()
-result = solution.maxProfit(prices)
+result = solution.lengthOfLongestSubstring(s)
+# result = solution.maxProfit(prices)
 # result = solution.maxArea(height)
 # result = solution.threeSum(nums)
 # result = solution.twoSumSorted(numbers_sorted, target)
