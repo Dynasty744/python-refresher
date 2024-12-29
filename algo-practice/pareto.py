@@ -16,7 +16,12 @@ class Solution:
   def lengthOfLongestSubstring(self, s: str) -> int:
     # sliding window technique
     # we create a set to hold the substring
-    # as we iterate through the string
+    # the reason we use a set is because lookup is O(1)
+    # we could use a list to hold the substring
+    # but this slows down the lookup by quite a bit
+    # set the left boundary at first index
+    # but use right as moving right boundary
+    # while right boundary in range
     # if the char is in set
     # remove the left most char
     # move the left pointer by 1
