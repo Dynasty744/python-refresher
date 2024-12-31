@@ -3,16 +3,31 @@ from typing import List
 # nums = [-2, -2, 0, 0, 2, 2]
 # numbers_sorted = [2,7,11,15]
 # target = 9
-s = "pwwkew"
+s = "ABAB"
 # s = "A man, a plan, a canal: Panama"
 # t = 'ccac'
 # strs = ["eat","tea","tan","ate","nat","bat"]
-# k = 2
+k = 2
 # words = ["i","love","leetcode","i","love","coding"]
 # height = [1,8,6,2,5,4,8,3,7]
 # prices = [1,2,4,2,5,7,2,4,9,0,9]
 
 class Solution:
+  def characterReplacement(self, s: str, k: int) -> int:
+    count = {}
+    res = 0
+    left = 0
+    
+    for right in range(len(s)):
+      count[s[right]] = 1 + count.get(s[right], 0)
+
+      while (right - left + 1) - max(count.values()) > k:
+        count[s[left]] -= 1
+        left += 1
+
+      res = max(res, right - left + 1)
+    return res
+
   def lengthOfLongestSubstring(self, s: str) -> int:
     # sliding window technique
     # we create a set to hold the substring
@@ -357,7 +372,8 @@ class Solution:
     return None
 
 solution = Solution()
-result = solution.lengthOfLongestSubstring(s)
+result = solution.characterReplacement(s, k)
+# result = solution.lengthOfLongestSubstring(s)
 # result = solution.maxProfit(prices)
 # result = solution.maxArea(height)
 # result = solution.threeSum(nums)
