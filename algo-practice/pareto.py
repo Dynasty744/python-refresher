@@ -3,7 +3,7 @@ from typing import List
 # nums = [-2, -2, 0, 0, 2, 2]
 # numbers_sorted = [2,7,11,15]
 # target = 9
-s = "ABAB"
+s = "AABAAC"
 # s = "A man, a plan, a canal: Panama"
 # t = 'ccac'
 # strs = ["eat","tea","tan","ate","nat","bat"]
@@ -17,7 +17,7 @@ class Solution:
     count = {}
     res = 0
     left = 0
-    
+
     for right in range(len(s)):
       count[s[right]] = 1 + count.get(s[right], 0)
 
@@ -29,31 +29,25 @@ class Solution:
     return res
 
   def lengthOfLongestSubstring(self, s: str) -> int:
-    # sliding window technique
-    # we create a set to hold the substring
-    # the reason we use a set is because lookup is O(1)
-    # we could use a list to hold the substring
-    # but this slows down the lookup by quite a bit
-    # set the left boundary at first index
-    # but use right as moving right boundary
-    # while right boundary in range
-    # if the char is in set
-    # remove the left most char
-    # move the left pointer by 1
-    # and add the right char to set
-    # then update the len of set to res
-    res = 0
+    # O(n) sliding window technique
+    # the idea is to start left and right at the same index
+    # start with a for loop for O(n) iteration, using right boundary as range limit
+    # while any duplicates are found, we remove the left window and increase left
+    # then we add the duplicate char into set
+    # calculate the window length and update longest
+    # return longest
     char_set = set()
     left = 0
-    res = 0
+    longest_length = 0
 
     for right in range(len(s)):
       while s[right] in char_set:
         char_set.remove(s[left])
         left += 1
       char_set.add(s[right])
-      res = max(len(char_set), res)
-    return res
+      window_length = (right - left) + 1
+      longest_length = max(window_length, longest_length)
+    return longest_length
 
   def maxProfit(self, prices: List[int]) -> int:
     # O(n^2)
