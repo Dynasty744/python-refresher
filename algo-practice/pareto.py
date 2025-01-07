@@ -3,7 +3,8 @@ from typing import List
 # nums = [-2, -2, 0, 0, 2, 2]
 # numbers_sorted = [2,7,11,15]
 # target = 9
-s = "AABAAC"
+# s = "AABAAC"
+s = "()[]{}"
 # s = "A man, a plan, a canal: Panama"
 # t = 'ccac'
 # strs = ["eat","tea","tan","ate","nat","bat"]
@@ -13,15 +14,47 @@ k = 2
 # prices = [1,2,4,2,5,7,2,4,9,0,9]
 
 class Solution:
+  def isValid(self, s: str) -> bool:
+    # O(n)
+    # make a map that contains the parens, closing ones as key, open as value
+    # with a stack, easiest way is to use a list []
+    # start with for loop and iterate through each char
+    # if char is an open paren, append to stack
+    # else, must be closing paren, return false if empty stack
+    # otherwise, stack is not empty, and we must pop off last el
+    # and the popped el must match the corresponding key in the map
+    stack = []
+    char_map = {
+        ")": "(",
+        "]": "[",
+        "}": "{"
+      }
+    
+    for c in s:
+      if c not in char_map:
+        stack.append(c)
+      else:
+        if not stack:
+          return False
+        else:
+          popped = stack.pop()
+          if popped != char_map[c]:
+            return False
+    return not stack
+    
   def characterReplacement(self, s: str, k: int) -> int:
     count = {}
     res = 0
     left = 0
 
     for right in range(len(s)):
-      count[s[right]] = 1 + count.get(s[right], 0)
+      if s[right] in count:
+        count[s[right]] += 1
+      else:
+        count[s[right]] = 1
+      # count[s[right]] = 1 + count.get(s[right], 0) # shorthand
 
-      while (right - left + 1) - max(count.values()) > k:
+      if (right - left + 1) - max(count.values()) > k:
         count[s[left]] -= 1
         left += 1
 
@@ -240,7 +273,7 @@ class Solution:
         # Only start streak if 'num' has NO left neighbor
       if num - 1 not in nums_set:
         current_streak = 1
-        while num + 1 in nums_set:
+        while num + 1 in nums_set: # while needs to be nested under if statement, otherwise current_streak will keep incrementing
           num += 1
           current_streak += 1
 
@@ -366,7 +399,8 @@ class Solution:
     return None
 
 solution = Solution()
-result = solution.characterReplacement(s, k)
+result = solution.isValid(s)
+# result = solution.characterReplacement(s, k)
 # result = solution.lengthOfLongestSubstring(s)
 # result = solution.maxProfit(prices)
 # result = solution.maxArea(height)
