@@ -40,11 +40,21 @@ class Solution:
           popped = stack.pop()
           if popped != char_map[c]:
             return False
+          
     return not stack
     
   def characterReplacement(self, s: str, k: int) -> int:
+    # O(n) sliding window
+    # we start by using for loop to build a map
+    # while we're doing this, 
+    # check during each iteration to see if window is valid
+    # how can we verify a particular window is valid?
+    # we know this when we take:
+    # length of the window: right - left + 1
+    # frequency of most common char in count
+    # as long as value is < or = to k, then window is valid
     count = {}
-    res = 0
+    longest = 0
     left = 0
 
     for right in range(len(s)):
@@ -58,14 +68,14 @@ class Solution:
         count[s[left]] -= 1
         left += 1
 
-      res = max(res, right - left + 1)
-    return res
+      longest = max(longest, right - left + 1)
+    return longest
 
   def lengthOfLongestSubstring(self, s: str) -> int:
     # O(n) sliding window technique
     # the idea is to start left and right at the same index
     # start with a for loop for O(n) iteration, using right boundary as range limit
-    # while any duplicates are found, we remove the left window and increase left
+    # while any duplicates are found in the set, update window by removing the left most character and increase left pointer
     # then we add the duplicate char into set
     # calculate the window length and update longest
     # return longest
