@@ -2,9 +2,28 @@ from typing import List
 
 word1 = "ab"
 word2 = "pqrs"
+s = "abc"
+t = "acbgdc"
 nums = [0,1,0,3,12]
 
 class Solution:
+    def isSubsequence(self, s: str, t: str) -> bool:
+      # O(n) 2 pointers
+      # we're checking if 's' is a substring of 't'
+      # start by setting pointers 'i' and 'j' at 0 for the 2 strings
+      # while both pointers are lesser than the len of the 2 strings
+      # we only want to move pointer 's' if there's a match with 'j'
+      # we increment 'j' in both cases, so we do that outside of if statement
+      # then we return true if pointer 'i' is equal to length of 's'
+      # because that means we've gotten to the end of the string
+      # and there's a full match of the substring
+      i, j = 0, 0
+      while i < len(s) and j < len(t):
+        if s[i] == t[j]:
+          i += 1
+        j += 1
+      return True if i == len(s) else False
+
     def moveZeroes(self, nums: List[int]) -> None:
       # O(n) using 2 pointers
       # instead of moving 0s to the right
@@ -47,6 +66,7 @@ class Solution:
       return ''.join(res)    
 
 solution = Solution()
-result = solution.moveZeroes(nums)
+result = solution.isSubsequence(s, t)
+# result = solution.moveZeroes(nums)
 # result = solution.mergeAlternately(word1, word2)
 print(result)
