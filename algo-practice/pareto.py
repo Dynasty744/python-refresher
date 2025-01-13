@@ -64,6 +64,7 @@ class Solution:
         count[s[right]] = 1
       # count[s[right]] = 1 + count.get(s[right], 0) # shorthand
 
+      # this is checking if the window is invalid
       if (right - left + 1) - max(count.values()) > k:
         count[s[left]] -= 1
         left += 1
