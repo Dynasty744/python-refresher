@@ -6,9 +6,38 @@ s = "abc"
 t = "acbgdc"
 flowerbed = [1,0,0,0,1]
 n = 1
-nums = [0,1,0,3,12]
+nums = [3,1,3,4,3]
+k = 5
+# nums = [0,1,0,3,12]
 
 class Solution:
+  def maxOperations(self, nums: List[int], k: int) -> int:
+    # O(n) 2 pointer solution
+    # we want to sort nums list to take advantage of the 2 pointer technique
+    # setting the 2 pointers on either end of the list
+    # we know that if the sum of 2 pointers is greater than target
+    # then we decrement the right pointer
+    # and if the sum of 2 pointers is less than target
+    # then we increment the left pointer
+    # question is misleading by stating the element should be removed
+    # it doesn't need to be removed, because pointers have already moved on
+    nums.sort()
+    count = 0
+    left = 0
+    right = len(nums) - 1
+    
+    while left < right:
+      if nums[left] + nums[right] > k:
+        right -= 1
+      elif nums[left] + nums[right] < k:
+        left += 1
+      else:
+        count += 1
+        left += 1
+        right -= 1
+    
+    return count
+
   def canPlaceFlowers(self, flowerbed: List[int], n: int) -> bool:
     # O(n)
     # start by placing 0s on both sides of the flowerbed
@@ -85,7 +114,8 @@ class Solution:
     return ''.join(res)    
 
 solution = Solution()
-result = solution.canPlaceFlowers(flowerbed, n)
+result = solution.maxOperations(nums, k)
+# result = solution.canPlaceFlowers(flowerbed, n)
 # result = solution.isSubsequence(s, t)
 # result = solution.moveZeroes(nums)
 # result = solution.mergeAlternately(word1, word2)
