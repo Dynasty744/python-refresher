@@ -2,7 +2,7 @@ from typing import List
 
 # word1 = "ab"
 # word2 = "pqrs"
-s = "IceCreAm"
+s = "the sky is blue"
 # t = "acbgdc"
 # flowerbed = [1,0,0,0,1]
 # n = 1
@@ -11,6 +11,16 @@ s = "IceCreAm"
 # nums = [0,1,0,3,12]
 
 class Solution:
+  def reverseWords(self, s: str) -> str:
+    # O(n) using built-in function
+    # first split the string into list format
+    # then apply the reverse method to the list
+    # then return by joining via space
+    word_list = s.split()
+    word_list.reverse()
+
+    return ' '.join(word_list)
+
   def reverseVowels(self, s: str) -> str:
     # O(n) 2 pointer approach
     # we'll use a set() for vowels for O(1) look up
@@ -143,7 +153,8 @@ class Solution:
     return ''.join(res)    
 
 solution = Solution()
-result = solution.reverseVowels(s)
+result = solution.reverseWords(s)
+# result = solution.reverseVowels(s)
 # result = solution.maxOperations(nums, k)
 # result = solution.canPlaceFlowers(flowerbed, n)
 # result = solution.isSubsequence(s, t)
