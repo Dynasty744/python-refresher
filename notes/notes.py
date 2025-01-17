@@ -96,6 +96,17 @@ strs = ["a"]
 #     print("It's damn cold")
 # print("Done")
 
+# FOR LOOPS
+# for loop would be a better implementation
+# numbers = [1, 2, 3, 4, 5]
+# for item in numbers: # item is a loop variable
+#     print(item)
+
+# i = 0 # item is a loop variable
+# while i < len(numbers):
+#     print(numbers[i])
+#     i = i + 1
+
 # CONVERSION EXERCISE
 # first, the program asks for my weight, let's say 170
 # next it's asking if weight is in (K)g or (L)bs, lower or uppercase, doesn't matter, let's say 'l'
@@ -118,6 +129,15 @@ strs = ["a"]
 #     print(i * '*') # able to multiply a number by a string
 #     i = i + 1
 
+# REVERSED()
+#
+# The reversed() function returns an iterator object 
+# that provides access to the elements of an 
+# iterable (list, tuple, string, etc.) in reverse order.
+# string = 'Python'
+# result = reversed(string)
+# print("".join(result)) # nohtyP
+
 # LISTS
 # is a complex type in Python
 # 
@@ -138,31 +158,30 @@ strs = ["a"]
 # numbers.clear() # clear all values in list
 # print(numbers)
 
-# FOR LOOPS
-# for loop would be a better implementation
-# numbers = [1, 2, 3, 4, 5]
-# for item in numbers: # item is a loop variable
-#     print(item)
-
-# i = 0 # item is a loop variable
-# while i < len(numbers):
-#     print(numbers[i])
-#     i = i + 1
+# REVERSE()
+# 
+# reverse() is a list method
+# reverse the order of the list object
+# fruits = ['apple', 'banana', 'cherry']
+# fruits.reverse()
+# print(fruits) # ['cherry', 'banana', 'apple']
 
 # SORT()
+#
 # sorted() can be used with iterables, however,
 # sort() can only be used with lists, because it's a method of list class
 # sort() returns None and modifies the values in place
 # if it's already a list, then use the .sort() method
 # it will modify the called list!
-s = 'hello'
-l = [2,1,3]
-lSorted = l.sort()
-print(sorted(s)) # ['e', 'h', 'l', 'l', 'o']
-print(l) # [1, 2, 3]
-print(lSorted) # None
+# s = 'hello'
+# l = [2,1,3]
+# lSorted = l.sort()
+# print(sorted(s)) # ['e', 'h', 'l', 'l', 'o']
+# print(l) # [1, 2, 3]
+# print(lSorted) # None
 
 # MAX()
+#
 # returns the maximum value in an iterable
 # print(max(1,2,4,3)) # 3
 # print(max([1,3,5,2])) # 5
