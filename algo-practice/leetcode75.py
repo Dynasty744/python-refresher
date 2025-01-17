@@ -15,9 +15,9 @@ k = 4
 class Solution:
   def findMaxAverage(self, nums: List[int], k: int) -> float:
     # O(n) sliding windows
-    # start by calculating max_average by slicing list
-    # key to this one is setting the window from the start
-    # then shift the window over by adding right and subtracting left
+    # key to this one is adding right to current_sum then subtracting left
+    # this is how we 'slide' the window
+    # window length is set within the for loop
     current_sum = sum(nums[:k])
     max_average = current_sum / k
     
