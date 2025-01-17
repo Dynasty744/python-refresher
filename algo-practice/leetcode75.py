@@ -2,15 +2,31 @@ from typing import List
 
 # word1 = "ab"
 # word2 = "pqrs"
-s = "the sky is blue"
+# s = "the sky is blue"
 # t = "acbgdc"
 # flowerbed = [1,0,0,0,1]
+nums = [1,12,-5,-6,50,3]
+k = 4
 # n = 1
 # nums = [3,1,3,4,3]
 # k = 5
 # nums = [0,1,0,3,12]
 
 class Solution:
+  def findMaxAverage(self, nums: List[int], k: int) -> float:
+    # O(n) sliding windows
+    # start by calculating max_average by slicing list
+    # key to this one is setting the window from the start
+    # then shift the window over by adding right and subtracting left
+    current_sum = sum(nums[:k])
+    max_average = current_sum / k
+    
+    for i in range(k, len(nums)):
+      current_sum += nums[i] - nums[i - k]
+      max_average = max(max_average, current_sum / k)
+
+    return max_average
+
   def reverseWords(self, s: str) -> str:
     # O(n) using built-in function
     # first split the string into list format
@@ -153,7 +169,8 @@ class Solution:
     return ''.join(res)    
 
 solution = Solution()
-result = solution.reverseWords(s)
+result = solution.findMaxAverage(nums, k)
+# result = solution.reverseWords(s)
 # result = solution.reverseVowels(s)
 # result = solution.maxOperations(nums, k)
 # result = solution.canPlaceFlowers(flowerbed, n)
