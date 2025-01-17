@@ -5,14 +5,38 @@ from typing import List
 # s = "the sky is blue"
 # t = "acbgdc"
 # flowerbed = [1,0,0,0,1]
-nums = [1,12,-5,-6,50,3]
-k = 4
+# nums = [1,12,-5,-6,50,3]
+k = 3
+s = "abciiidef"
 # n = 1
 # nums = [3,1,3,4,3]
 # k = 5
 # nums = [0,1,0,3,12]
 
 class Solution:
+  def maxVowels(self, s: str, k: int) -> int:
+    # O(n) sliding window technique
+    # key to this one is get the count of the first window
+    # then add or subtract count based on if next char is in vowel
+    vowels = set('aeiou')
+    max_vowels = 0
+    count = 0
+
+    for i in range(k):
+      if s[i] in vowels:
+        count += 1
+    
+    max_vowels = count
+
+    for i in range(k, len(s)): # 'i' continues from previous loop, does not reset to '0'
+      if s[i] in vowels: # so if the next char is a vowel, then +1
+        count += 1
+      if s[i - k] in vowels: # if left most char is a vowel, then -1, since it's getting removed
+        count -= 1
+      max_vowels = max(max_vowels, count)
+
+    return max_vowels
+
   def findMaxAverage(self, nums: List[int], k: int) -> float:
     # O(n) sliding windows
     # key to this one is adding right to current_sum then subtracting left
@@ -169,7 +193,8 @@ class Solution:
     return ''.join(res)    
 
 solution = Solution()
-result = solution.findMaxAverage(nums, k)
+result = solution.maxVowels(s, k)
+# result = solution.findMaxAverage(nums, k)
 # result = solution.reverseWords(s)
 # result = solution.reverseVowels(s)
 # result = solution.maxOperations(nums, k)
