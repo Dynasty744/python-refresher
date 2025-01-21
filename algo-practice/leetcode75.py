@@ -28,7 +28,7 @@ class Solution:
     
     max_vowels = count
 
-    for i in range(k, len(s)): # 'i' continues from previous loop, does not reset to '0'
+    for i in range(k, len(s)): # 'i' continues from 'k', which is the start of the sliding window
       if s[i] in vowels: # so if the next char is a vowel, then +1
         count += 1
       if s[i - k] in vowels: # if left most char is a vowel, then -1, since it's getting removed
