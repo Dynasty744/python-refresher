@@ -6,14 +6,39 @@ from typing import List
 # t = "acbgdc"
 # flowerbed = [1,0,0,0,1]
 # nums = [1,12,-5,-6,50,3]
-k = 3
-s = "abciiidef"
+# k = 3
+# s = "abciiidef"
 # n = 1
 # nums = [3,1,3,4,3]
 # k = 5
 # nums = [0,1,0,3,12]
+nums = [1,1,1,0,0,0,1,1,1,1,0]
+k = 2
 
 class Solution:
+  def longestOnes(self, nums: List[int], k: int) -> int:
+    # O(n) sliding window solution
+    # key here is determining if window is valid or invalid
+    # valid means the number of zeros flipped is lesser or equal to k
+    # invalid means we've gone over k
+    # while window is invalid, we keep incrementing left pointer
+    # until left pointer value is a zero, then we decrement number of zeros
+    # we keep track of max window size throughout all this
+    max_length = 0
+    num_zeros = 0
+    left = 0
+
+    for right in range(len(nums)):
+      if not nums[right]:
+        num_zeros += 1
+      while num_zeros > k:
+        if nums[left] == 0:
+          num_zeros -= 1
+        left += 1
+      max_length = max(max_length, right - left + 1)
+    
+    return max_length
+
   def maxVowels(self, s: str, k: int) -> int:
     # O(n) sliding window technique
     # key to this one is get the count of the first window
@@ -193,7 +218,8 @@ class Solution:
     return ''.join(res)    
 
 solution = Solution()
-result = solution.maxVowels(s, k)
+result = solution.longestOnes(nums, k)
+# result = solution.maxVowels(s, k)
 # result = solution.findMaxAverage(nums, k)
 # result = solution.reverseWords(s)
 # result = solution.reverseVowels(s)
