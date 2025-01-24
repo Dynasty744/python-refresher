@@ -1,4 +1,5 @@
 from typing import List
+from math import gcd
 
 # word1 = "ab"
 # word2 = "pqrs"
@@ -12,10 +13,28 @@ from typing import List
 # nums = [3,1,3,4,3]
 # k = 5
 # nums = [0,1,0,3,12]
-nums = [1,1,1,0,0,0,1,1,1,1,0]
-k = 2
+# nums = [1,1,1,0,0,0,1,1,1,1,0]
+# k = 2
+str1 = "ABABAB"
+str2 = "ABAB"
 
 class Solution:
+  def gcdOfStrings(self, str1: str, str2: str) -> str:
+    # O(m+n)
+    # first we check if the strings are divisible
+    # we can do this by concatinating them together in different orders
+    # if they are different, then that means they're not divisible
+    # otherwise, there must be a common substring that can be used to divide both strings
+    # we can make our approach by identifying the length of both strings
+    # then getting the greatest common divisor of both length
+    # then simply return the string sliced by the gcd
+    if str1 + str2 != str2 + str1:
+      return ""
+    
+    max_length = gcd(len(str1), len(str2))
+
+    return str1[:max_length]
+
   def longestSubarray(self, nums: List[int]) -> int:
     # O(n) sliding window solution
     # start with left and right on zero
