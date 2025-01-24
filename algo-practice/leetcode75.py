@@ -16,6 +16,32 @@ nums = [1,1,1,0,0,0,1,1,1,1,0]
 k = 2
 
 class Solution:
+  def longestSubarray(self, nums: List[int]) -> int:
+    # O(n) sliding window solution
+    # start with left and right on zero
+    # on iteration, we keep track of zeros encountered
+    # key is knowing when window is valid vs invalid
+    # valid means zeros encounted is less or equal to 1
+    # invalid means zeros encountered is greater than 1
+    # when window is invalid, we increment left
+    # if left is zero, then decrement num of zeros count
+    # keep track of max ones by calculating size of window
+    # remember to subtract 1 because we're removing the zero
+    longest = 0
+    num_zeros = 0
+    left = 0
+
+    for right in range(len(nums)):
+      if nums[right] == 0:
+        num_zeros += 1
+      while num_zeros > 1:
+        if nums[left] == 0:
+          num_zeros -= 1
+        left += 1
+      longest = max(longest, right - left + 1)
+    
+    return longest + 1
+
   def longestOnes(self, nums: List[int], k: int) -> int:
     # O(n) sliding window solution
     # key here is determining if window is valid or invalid
@@ -218,7 +244,8 @@ class Solution:
     return ''.join(res)    
 
 solution = Solution()
-result = solution.longestOnes(nums, k)
+result = solution.longestSubarray(nums)
+# result = solution.longestOnes(nums, k)
 # result = solution.maxVowels(s, k)
 # result = solution.findMaxAverage(nums, k)
 # result = solution.reverseWords(s)
