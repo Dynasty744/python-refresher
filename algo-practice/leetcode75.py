@@ -15,10 +15,27 @@ from math import gcd
 # nums = [0,1,0,3,12]
 # nums = [1,1,1,0,0,0,1,1,1,1,0]
 # k = 2
-str1 = "ABABAB"
-str2 = "ABAB"
+# str1 = "ABABAB"
+# str2 = "ABAB"
+gain = [-4,-3,-2,-1,4,3,2]
 
 class Solution:
+  def largestAltitude(self, gain: List[int]) -> int:
+    # starting at alt 0
+    # down to -5
+    # gains 1 so that's -4
+    # gains 5 so that's 1
+    # gains 0 so that's 1
+    # gains -7 so that's -6
+    current_alt = 0
+    max_alt = 0
+
+    for i in range(len(gain)):
+      current_alt += gain[i]
+      max_alt = max(max_alt, current_alt)
+    
+    return max_alt
+
   def gcdOfStrings(self, str1: str, str2: str) -> str:
     # O(m+n)
     # first we check if the strings are divisible
@@ -209,7 +226,7 @@ class Solution:
     # we're checking if 's' is a substring of 't'
     # start by setting pointers 'i' and 'j' at 0 for the 2 strings
     # while both pointers are lesser than the len of the 2 strings
-    # we only want to move pointer 's' if there's a match with 'j'
+    # we only want to move pointer for 's' if there's a match with 'j'
     # we increment 'j' in both cases, so we do that outside of if statement
     # then we return true if pointer 'i' is equal to length of 's'
     # because that means we've gotten to the end of the string
@@ -263,7 +280,8 @@ class Solution:
     return ''.join(res)    
 
 solution = Solution()
-result = solution.longestSubarray(nums)
+result = solution.largestAltitude(gain)
+# result = solution.longestSubarray(nums)
 # result = solution.longestOnes(nums, k)
 # result = solution.maxVowels(s, k)
 # result = solution.findMaxAverage(nums, k)
