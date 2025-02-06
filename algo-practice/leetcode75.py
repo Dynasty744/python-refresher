@@ -17,9 +17,27 @@ from math import gcd
 # k = 2
 # str1 = "ABABAB"
 # str2 = "ABAB"
-gain = [-4,-3,-2,-1,4,3,2]
+# gain = [-4,-3,-2,-1,4,3,2]
+nums = [1,7,3,6,5,6]
 
 class Solution:
+  def pivotIndex(self, nums: List[int]) -> int:
+    # we can find the right_sum by taking total_sum - pivot - left_sum
+    # compare both side sums while iterating
+    # add the value of nums[i] to left_sum after comparison
+    # this is the crucial step as left_sum won't be calculated properly for comparison if it comes before
+    # if equal then return i, if no match, then return -1
+    total_sum = sum(nums)
+    left_sum = 0
+
+    for i in range(len(nums)):
+      right_sum = total_sum - nums[i] - left_sum
+      if left_sum == right_sum:
+        return i
+      left_sum += nums[i]
+    
+    return -1
+
   def largestAltitude(self, gain: List[int]) -> int:
     # starting at alt 0
     # down to -5
@@ -280,7 +298,8 @@ class Solution:
     return ''.join(res)    
 
 solution = Solution()
-result = solution.largestAltitude(gain)
+result = solution.pivotIndex(nums)
+# result = solution.largestAltitude(gain)
 # result = solution.longestSubarray(nums)
 # result = solution.longestOnes(nums, k)
 # result = solution.maxVowels(s, k)
