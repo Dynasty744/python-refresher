@@ -274,3 +274,45 @@ strs = ["a"]
 
 # nums = []
 # print(len(nums))
+
+#     1
+#    / \
+#   2   3
+#  / \
+# 4   5
+
+def treeSum(root):
+  if root is None:
+    return 0
+  else:
+    leftSum = treeSum(root.left)
+    rightSum = treeSum(root.right)
+    return root.data + leftSum + rightSum
+
+#     5
+#    / \
+#   3   8
+#  / \
+# 1   4
+
+def treeMax(root):
+  if root is None:
+    return float("-inf")
+  else:
+    leftMax = treeMax(root. left)
+    rightMax = treeMax(root.right)
+    return max (root.data, leftMax, rightMax)
+  
+#     5
+#    / \
+#   3   8
+#  / \
+# 1   4
+  
+def treeHeight(root) :
+  if root is None:
+    return 0
+  else:
+    leftHeight = treeHeight (root. left)
+    rightHeight = treeHeight(root.right)
+    return 1 + max(leftHeight, rightHeight)

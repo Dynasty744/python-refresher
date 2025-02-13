@@ -1,4 +1,4 @@
-from typing import List
+from typing import List, Optional
 
 # nums = [-2, -2, 0, 0, 2, 2]
 # numbers_sorted = [2,7,11,15]
@@ -13,7 +13,26 @@ k = 2
 # height = [1,8,6,2,5,4,8,3,7]
 # prices = [1,2,4,2,5,7,2,4,9,0,9]
 
+class TreeNode:
+    def __init__(self, val=0, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
+
 class Solution:
+  def maxDepth(self, root: Optional[TreeNode]) -> int:
+    # this is a recursive solution to finding max nodes
+    # we return 0 if root is empty, base case
+    # otherwise, we calculate the left depth by calling on itself
+    # it reaches the bottom and keeps the max value while traversing back up
+    # we do the same for right depth on each node traversal
+    if root is None:
+      return 0
+    else:
+      leftDepth = self.maxDepth(root.left)
+      rightDepth = self.maxDepth(root.right)
+      return 1 + max(leftDepth, rightDepth)
+
   def isValid(self, s: str) -> bool:
     # O(n)
     # make a map that contains the parens, closing ones as key, open as value
