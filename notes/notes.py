@@ -299,7 +299,7 @@ def treeMax(root):
   if root is None:
     return float("-inf")
   else:
-    leftMax = treeMax(root. left)
+    leftMax = treeMax(root.left)
     rightMax = treeMax(root.right)
     return max (root.data, leftMax, rightMax)
   
@@ -313,6 +313,6 @@ def treeHeight(root) :
   if root is None:
     return 0
   else:
-    leftHeight = treeHeight (root. left)
+    leftHeight = treeHeight (root.left)
     rightHeight = treeHeight(root.right)
     return 1 + max(leftHeight, rightHeight)

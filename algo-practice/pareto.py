@@ -14,12 +14,38 @@ k = 2
 # prices = [1,2,4,2,5,7,2,4,9,0,9]
 
 class TreeNode:
-    def __init__(self, val=0, left=None, right=None):
-        self.val = val
-        self.left = left
-        self.right = right
+  def __init__(self, val=0, left=None, right=None):
+      self.val = val
+      self.left = left
+      self.right = right
 
 class Solution:
+  def diameterOfBinaryTree(self, root: Optional[TreeNode]) -> int:
+    diameter = 0
+
+    def height(node):
+      if not node:
+        return 0
+      
+      nonlocal diameter
+      leftHeight = height(node.left)
+      rightHeight = height(node.right)
+      diameter = max(diameter, leftHeight + rightHeight)
+
+      return max(leftHeight, rightHeight) + 1
+
+    height(root)
+    return diameter
+
+  def invertTree(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
+    if root is None:
+      return root
+    else:
+      self.invertTree(root.left)
+      self.invertTree(root.right)
+      root.left, root.right = root.right, root.left
+      return root
+      
   def maxDepth(self, root: Optional[TreeNode]) -> int:
     # this is a recursive solution to finding max nodes
     # we return 0 if root is empty, base case
@@ -429,7 +455,7 @@ class Solution:
     return None
 
 solution = Solution()
-result = solution.isValid(s)
+# result = solution.isValid(s)
 # result = solution.characterReplacement(s, k)
 # result = solution.lengthOfLongestSubstring(s)
 # result = solution.maxProfit(prices)
